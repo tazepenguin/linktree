@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Russell | links</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #0a0c10;
+      font-family: 'Fira Code', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      color: #c0e0d0;
+    }
+    .link-container {
+      max-width: 550px;
+      width: 100%;
+      text-align: center;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px solid #2ecc71;
+      margin: 0 auto 1rem;
+      background: #1e2a2a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #2ecc71;
+      background: #0f1117;
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.5px;
+    }
+    .tagline {
+      color: #8ba89a;
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px dashed #2a2f3a;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+    .link-card {
+      background: #0c0e13;
+      border: 1px solid #2a2f3a;
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #c0e0d0;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(2px);
+    }
+    .link-card:hover {
+      border-color: #2ecc71;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(46,204,113,0.2);
+    }
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .link-left i {
+      font-size: 1.5rem;
+      width: 32px;
+      color: #2ecc71;
+    }
+    .link-info h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .link-info p {
+      font-size: 0.7rem;
+      color: #8ba89a;
+    }
+    .arrow {
+      color: #2ecc71;
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+    .link-card:hover .arrow {
+      transform: translateX(4px);
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: #5a6e66;
+    }
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrixCanvas" class="matrix-bg"></canvas>
+  <div class="link-container">
+    <div class="avatar">
+      <i class="fas fa-terminal"></i>
+    </div>
+    <h1>Russell</h1>
+    <div class="tagline">developer · data · devops</div>
+
+    <a href="https://russell-portfolio.onrender.com" target="_blank" class="link-card">
+      <div class="link-left">
+        <i class="fas fa-laptop-code"></i>
+        <div class="link-info">
+          <h3>~/portfolio</h3>
+          <p>My dev portfolio</p>
+        </div>
+      </div>
+      <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+    </a>
+
+    <a href="https://crystalhopetrainingcentre.onrender.com" target="_blank" class="link-card">
+      <div class="link-left">
+        <i class="fas fa-chalkboard-user"></i>
+        <div class="link-info">
+          <h3>Crystal Hope Training Centre</h3>
+          <p>training & courses platform</p>
+        </div>
+      </div>
+      <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+    </a>
+
+    <a href="https://nakazifoodsltd-frontend.onrender.com" target="_blank" class="link-card">
+      <div class="link-left">
+        <i class="fas fa-utensils"></i>
+        <div class="link-info">
+          <h3>Nakazi Foods Ltd</h3>
+          <p>eCommerce web app for a crisps company</p>
+        </div>
+      </div>
+      <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+    </a>
+
+    <a href="https://github.com/tazepenguin" target="_blank" class="link-card">
+      <div class="link-left">
+        <i class="fab fa-github"></i>
+        <div class="link-info">
+          <h3>GitHub / tazepenguin</h3>
+          <p>open source & projects</p>
+        </div>
+      </div>
+      <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+    </a>
+
+    <!-- NEW: WhatsApp Me -->
+    <a href="https://wa.me/254743375966?text=Hello%20Russell%2C%20I%20saw%20your%20linktree%20and%20I%27m%20interested%20in%20collaborating%21" target="_blank" class="link-card">
+      <div class="link-left">
+        <i class="fab fa-whatsapp"></i>
+        <div class="link-info">
+          <h3>WhatsApp me</h3>
+          <p>quick chat & collaboration</p>
+        </div>
+      </div>
+      <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+    </a>
+
+    <!-- NEW: Email Me -->
+    <a href="mailto:charlesrussell981@gmail.com?subject=Collaboration%20Inquiry%20from%20Linktree&body=Hi%20Russell%2C%20I%20saw%20your%20links%20and%20I'd%20like%20to%20talk%20about%20a%20project." class="link-card">
+      <div class="link-left">
+        <i class="fas fa-envelope"></i>
+        <div class="link-info">
+          <h3>Email me</h3>
+          <p>charlesrussell981@gmail.com</p>
+        </div>
+      </div>
+      <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+    </a>
+
+    <footer>
+      <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle;"></i> penguin labs · exit 0
+    </footer>
+  </div>
+
+  <script>
+    // Simple matrix rain background
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, columns, drops;
+    const fontSize = 14;
+    const chars = "01アイウエオカキクケコサシスセソタチツテトABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
+    
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      columns = Math.floor(width / fontSize);
+      drops = Array(columns).fill().map(() => Math.random() * -100);
+    }
+    
+    function draw() {
+      ctx.fillStyle = 'rgba(10, 12, 16, 0.05)';
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = '#2ecc71';
+      ctx.font = fontSize + 'px monospace';
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars[Math.floor(Math.random() * chars.length)];
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+        ctx.fillText(text, x, y);
+        if (y > height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      requestAnimationFrame(draw);
+    }
+    
+    window.addEventListener('resize', () => { resize(); });
+    resize();
+    draw();
+  </script>
+</body>
+</html>
