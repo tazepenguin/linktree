@@ -21,6 +21,7 @@
       min-height: 100vh;
       padding: 2rem 1rem;
       color: #c0e0d0;
+      transition: background 0.1s;
     }
     .link-container {
       max-width: 550px;
@@ -40,6 +41,7 @@
       font-size: 3rem;
       color: #2ecc71;
       background: #0f1117;
+      transition: all 0.1s;
     }
     h1 {
       font-size: 1.6rem;
@@ -116,6 +118,105 @@
       opacity: 0.15;
       pointer-events: none;
     }
+
+    body.glitch {
+      animation: bgFlicker 0.15s infinite;
+    }
+
+    @keyframes bgFlicker {
+      0%, 100% { background: #0a0c10; }
+      50% { background: #0e1218; }
+    }
+
+    body.glitch .link-container {
+      animation: containerShake 0.12s infinite;
+    }
+
+    body.glitch .avatar,
+    body.glitch h1,
+    body.glitch .tagline,
+    body.glitch .link-card,
+    body.glitch footer {
+      animation: textGlitch 0.18s infinite;
+    }
+
+    @keyframes textGlitch {
+      0% {
+        transform: translate(0);
+        text-shadow: 0 0 0 #2ecc71;
+        filter: blur(0);
+        opacity: 1;
+      }
+      10% {
+        transform: translate(-2px, 1px);
+        text-shadow: -2px 0 #ff0055, 2px 0 #00ffff;
+      }
+      20% {
+        transform: translate(2px, -2px);
+        text-shadow: 2px 0 #ff0055, -2px 0 #00ffff;
+        filter: blur(0.4px);
+      }
+      30% {
+        transform: translate(-1px, 2px);
+        text-shadow: -1px 0 #00ffaa, 1px 0 #ff00aa;
+      }
+      40% {
+        transform: translate(3px, 0);
+        text-shadow: 3px 0 red, -3px 0 cyan;
+        filter: blur(0.6px);
+        opacity: 0.9;
+      }
+      50% {
+        transform: translate(-3px, -1px);
+        text-shadow: -3px 0 cyan, 3px 0 magenta;
+      }
+      60% {
+        transform: translate(1px, 2px);
+        text-shadow: 1px 0 lime, -1px 0 yellow;
+        filter: blur(0.3px);
+      }
+      70% {
+        transform: translate(-2px, -2px);
+        text-shadow: -2px 0 #0ff, 2px 0 #f0f;
+      }
+      80% {
+        transform: translate(2px, 1px);
+        text-shadow: 2px 0 red, -2px 0 blue;
+        opacity: 0.95;
+      }
+      90% {
+        transform: translate(-1px, 0);
+        text-shadow: -1px 0 #ff9900, 1px 0 #00ccff;
+      }
+      100% {
+        transform: translate(0);
+        text-shadow: 0 0 0 #2ecc71;
+        filter: blur(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes containerShake {
+      0%, 100% { transform: translate(0); }
+      25% { transform: translate(-3px, 1px); }
+      50% { transform: translate(3px, -1px); }
+      75% { transform: translate(-1px, 2px); }
+    }
+
+    body.glitch .avatar i {
+      animation: iconGlitch 0.2s infinite;
+    }
+
+    @keyframes iconGlitch {
+      0%, 100% { transform: scale(1); }
+      30% { transform: scale(1.05) rotate(2deg); }
+      60% { transform: scale(0.98) rotate(-2deg); }
+    }
+
+    body.glitch .link-card {
+      border-color: #ff0055;
+      box-shadow: 0 0 8px rgba(255, 0, 85, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -171,7 +272,6 @@
       <div class="arrow"><i class="fas fa-arrow-right"></i></div>
     </a>
 
-    <!-- NEW: WhatsApp Me -->
     <a href="https://wa.me/254743375966?text=Hello%20Russell%2C%20I%20saw%20your%20linktree%20and%20I%27m%20interested%20in%20collaborating%21" target="_blank" class="link-card">
       <div class="link-left">
         <i class="fab fa-whatsapp"></i>
@@ -183,7 +283,6 @@
       <div class="arrow"><i class="fas fa-arrow-right"></i></div>
     </a>
 
-    <!-- NEW: Email Me -->
     <a href="mailto:charlesrussell981@gmail.com?subject=Collaboration%20Inquiry%20from%20Linktree&body=Hi%20Russell%2C%20I%20saw%20your%20links%20and%20I'd%20like%20to%20talk%20about%20a%20project." class="link-card">
       <div class="link-left">
         <i class="fas fa-envelope"></i>
@@ -201,41 +300,57 @@
   </div>
 
   <script>
-    // Simple matrix rain background
-    const canvas = document.getElementById('matrixCanvas');
-    const ctx = canvas.getContext('2d');
-    let width, height, columns, drops;
-    const fontSize = 14;
-    const chars = "01アイウエオカキクケコサシスセソタチツテトABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
-    
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-      columns = Math.floor(width / fontSize);
-      drops = Array(columns).fill().map(() => Math.random() * -100);
-    }
-    
-    function draw() {
-      ctx.fillStyle = 'rgba(10, 12, 16, 0.05)';
-      ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#2ecc71';
-      ctx.font = fontSize + 'px monospace';
-      for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        const x = i * fontSize;
-        const y = drops[i] * fontSize;
-        ctx.fillText(text, x, y);
-        if (y > height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
+    (function() {
+      const canvas = document.getElementById('matrixCanvas');
+      const ctx = canvas.getContext('2d');
+      let width, height, columns, drops;
+      const fontSize = 14;
+      const chars = "01アイウエオカキクケコサシスセソタチツテトABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
+      
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        columns = Math.floor(width / fontSize);
+        drops = Array(columns).fill().map(() => Math.random() * -100);
       }
-      requestAnimationFrame(draw);
-    }
-    
-    window.addEventListener('resize', () => { resize(); });
-    resize();
-    draw();
+      
+      function draw() {
+        ctx.fillStyle = 'rgba(10, 12, 16, 0.05)';
+        ctx.fillRect(0, 0, width, height);
+        ctx.fillStyle = '#2ecc71';
+        ctx.font = fontSize + 'px monospace';
+        for (let i = 0; i < drops.length; i++) {
+          const text = chars[Math.floor(Math.random() * chars.length)];
+          const x = i * fontSize;
+          const y = drops[i] * fontSize;
+          ctx.fillText(text, x, y);
+          if (y > height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        }
+        requestAnimationFrame(draw);
+      }
+      
+      window.addEventListener('resize', () => { resize(); });
+      resize();
+      draw();
+
+      const body = document.body;
+      
+      function triggerGlitch() {
+        body.classList.add('glitch');
+        setTimeout(() => {
+          body.classList.remove('glitch');
+        }, 2000);
+      }
+
+      triggerGlitch();
+      
+      setInterval(() => {
+        triggerGlitch();
+      }, 10000);
+    })();
   </script>
 </body>
 </html>
